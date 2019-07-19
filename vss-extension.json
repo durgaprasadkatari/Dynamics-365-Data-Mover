@@ -2,13 +2,16 @@
     "manifestVersion": 1,
     "id": "DataMover",
     "name": "Moves data between two dynamics CRM instances",
-    "version": "1.0.0.17",
+    "version": "1.0.0.21",
     "publisher": "durgaprasadkatari",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
-    ],    
+    ],
+    "galleryFlags": [
+        "Public"
+    ], 
     "description": "Moves configuration data between two Dynamics CRM instances",
     "categories": [
         "Azure Pipelines"
@@ -21,6 +24,14 @@
             "path": "buildtasks"
         }
     ],
+    "content": {
+        "details": {
+            "path": "overview.md"
+        },
+        "license": {
+            "path": "LICENSE.md"
+        }
+    },
     "contributions": [
         {
             "id": "DataMover",

@@ -1,8 +1,8 @@
 {
     "manifestVersion": 1,
     "id": "DataMover",
-    "name": "Move data between two dynamics CRM instances",
-    "version": "1.0.0.10",
+    "name": "Moves data between two dynamics CRM instances",
+    "version": "1.0.0.15",
     "publisher": "durgaprasadkatari",
     "targets": [
         {

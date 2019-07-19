@@ -1,4 +1,5 @@
 ﻿# Dynamics-365-Data-Mover
+[![Build Status](https://durgaprasadkatari.visualstudio.com/FTI_DevOps_Training/_apis/build/status/Custom%20Extension%20test?branchName=master)](https://durgaprasadkatari.visualstudio.com/FTI_DevOps_Training/_build/latest?definitionId=10&branchName=master)
 
 Azure DevOps release pipeline task to move configuration data between two Dynamics CRM environments.
 

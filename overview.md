@@ -10,4 +10,4 @@ Azure DevOps release pipeline task to move configuration data between two Dynami
 4. Target Dynamics CRM Online URL
 5. Target Dynamics CRM Username
 6. Target Dynamics CRM Password
-
+7. Fetch XML Query

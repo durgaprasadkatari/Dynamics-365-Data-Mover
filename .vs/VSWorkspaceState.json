@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\buildtasks",
+    "\\buildtasks\\DataMover",
+    "\\buildtasks\\DeleteOptionSetValue"
+  ],
+  "SelectedNode": "\\buildtasks\\DeleteOptionSetValue\\powershell.ps1",
+  "PreviewInSolutionExplorer": false
+}

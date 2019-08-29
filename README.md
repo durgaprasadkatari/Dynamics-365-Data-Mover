@@ -18,7 +18,7 @@ This task retrieves the data from source dynamics instace using the fetch xml qu
 
 You can define the above CRM credentials in release pipeline variables and access those variables as shown in the below image.
 So that you don't need to re-enter the values for each release stage.
-![](images/DataMoverSample.png)
+![](images/DataMoverSample.PNG)
 
 ## Task 2:- Removes option set values from the local and global optionset fields.
 This task connects to the target Dynamics CRM instance and removes the option values from local optionset fields and global optionset fields.

@@ -38,6 +38,22 @@
             "helpMarkDown": "Source Dynamics 365 Password"
         },
         {
+            "name": "SourceOrganizationName",
+            "type": "string",
+            "label": "Source Organization Unique Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Source Dynamics 365 Organization Unique Name"
+        },
+        {
+            "name": "SourceOnlineRegion",
+            "type": "string",
+            "label": "Source Online Region",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Source Dynamics 365 OnlineRegion"
+        },
+        {
             "name": "TargetCRMURL",
             "type": "string",
             "label": "Target CRM URL",
@@ -60,6 +76,22 @@
             "defaultValue": "",
             "required": true,
             "helpMarkDown": "Target Dynamics 365 Password"
+        },
+        {
+            "name": "TargetOrganizationName",
+            "type": "string",
+            "label": "Target Organization Unique Name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Target Dynamics 365 Organization Unique Name"
+        },
+        {
+            "name": "TargetOnlineRegion",
+            "type": "string",
+            "label": "Target Online Region",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Target Dynamics 365 OnlineRegion"
         },
         {
             "name": "FetchXML",

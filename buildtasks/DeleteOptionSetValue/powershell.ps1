@@ -12,22 +12,9 @@ try {
     $GlobalOptionSetName = Get-VstsInput -Name 'GlobalOptionSetName'
     $OptionsToRemove = Get-VstsInput -Name 'OptionsToRemove'
 	$AttrOptionsToRemove = Get-VstsInput -Name 'AttrOptionsToRemove'
-	$targetUrl = Get-VstsInput -Name 'TargetCRMURL' -Require
-    $targetUserName = Get-VstsInput -Name 'TargetCRMUserName' -Require 
-    $targetPassword = Get-VstsInput -Name 'TargetCRMPassword' -Require
-
-    $TargetCredentials = @{
-        Username = "$targetUserName"
-        Password = "$targetPassword"
-        Url = "$targetUrl"
-    }
-
-    $TargetUser = $TargetCredentials.Username
-    $TargetPWord =  $TargetCredentials.Password | ConvertTo-SecureString -AsPlainText -Force
-    $TargetUrl = $TargetCredentials.Url
-
-    $targetCred = New-Object System.Management.Automation.PSCredential($TargetUser,$TargetPWord)
-    $targetConn = Connect-CrmOnline -Credential $targetCred -ServerUrl $TargetUrl
+	$targetConnectionString = Get-VstsInput -Name 'TargetCRMConnectionString' -Require
+    
+    $targetConn = Get-CrmConnection -ConnectionString $targetConnectionString
         
     Write-Host "Connected to target Dynamics 365" $targetConn.CrmConnectOrgUriActual.AbsoluteUri
 

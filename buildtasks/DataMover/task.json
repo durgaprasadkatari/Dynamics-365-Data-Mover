@@ -8,58 +8,26 @@
     "author": "Durgaprasad Katari",
     "version": {
         "Major": 1,
-        "Minor": 2,
+        "Minor": 3,
         "Patch": 0
     },
     "instanceNameFormat": "Moves data between dynamics 365",
     "inputs": [
         {
-            "name": "SourceCRMURL",
+            "name": "SourceCRMConnectionString",
             "type": "string",
-            "label": "Source CRM URL",
+            "label": "Source CRM Connection String",
             "defaultValue": "",
             "required": true,
-            "helpMarkDown": "Source Dynamics 365 URL"
+            "helpMarkDown": "Source Dynamics 365 Connection String"
         },
         {
-            "name": "SourceCRMUserName",
+            "name": "TargetCRMConnectionString",
             "type": "string",
-            "label": "Source UserName",
+            "label": "Target CRM Connection String",
             "defaultValue": "",
             "required": true,
-            "helpMarkDown": "Source Dynamics 365 User name"
-        },
-        {
-            "name": "SourceCRMPassword",
-            "type": "string",
-            "label": "Source CRM Password",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "Source Dynamics 365 Password"
-        },
-        {
-            "name": "TargetCRMURL",
-            "type": "string",
-            "label": "Target CRM URL",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "Target CRM URL"
-        },
-        {
-            "name": "TargetCRMUserName",
-            "type": "string",
-            "label": "Target CRM Username",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "Target Dynamics 365 UserName"
-        },
-        {
-            "name": "TargetCRMPassword",
-            "type": "string",
-            "label": "Target CRM Password",
-            "defaultValue": "",
-            "required": true,
-            "helpMarkDown": "Target Dynamics 365 Password"
+            "helpMarkDown": "Target Dynamics 365 Connection String"
         },
         {
             "name": "FetchXML",

@@ -9,7 +9,7 @@
   "version": {
     "Major": 1,
     "Minor": 1,
-    "Patch": 0
+    "Patch": 1
   },
   "instanceNameFormat": "Delete Option from OptionSet Field",
   "inputs": [
@@ -46,28 +46,12 @@
       "helpMarkDown": "Specify option integer value separated by semicolon(;). For ex: 100024;100025"
     },
     {
-      "name": "TargetCRMURL",
+      "name": "TargetCRMConnectionString",
       "type": "string",
-      "label": "Target CRM URL",
+      "label": "Target CRM Connection String",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Target CRM URL"
-    },
-    {
-      "name": "TargetCRMUserName",
-      "type": "string",
-      "label": "Target CRM Username",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "Target Dynamics 365 UserName"
-    },
-    {
-      "name": "TargetCRMPassword",
-      "type": "string",
-      "label": "Target CRM Password",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "Target Dynamics 365 Password"
+      "helpMarkDown": "Target CRM Connection String"
     }
   ],
   "execution": {

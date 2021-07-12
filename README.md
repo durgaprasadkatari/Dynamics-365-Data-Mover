@@ -1,6 +1,5 @@
-﻿# Dynamics-365-Data-Mover
-[![Build Status](https://durgaprasadkatari.visualstudio.com/FTI_DevOps_Training/_apis/build/status/Custom%20Extension%20test?branchName=master)](https://durgaprasadkatari.visualstudio.com/FTI_DevOps_Training/_build/latest?definitionId=10&branchName=master)
-
+﻿﻿# Dynamics-365-Data-Mover
+[[_TOC_]]
 Azure DevOps release pipeline task to move configuration data between two Dynamics CRM environments. It also delete option set values from global optionset and local optionset fields.
 
 ## Task 1:- Upsert Configuration entity data
@@ -8,13 +7,9 @@ This task retrieves the data from source dynamics instace using the fetch xml qu
 
 
 #### Required input parameters
-1. Source Dynamics CRM Online URL
-2. Source Dynamics CRM Username
-3. Source Dynamics CRM Password
-4. Target Dynamics CRM Online URL
-5. Target Dynamics CRM Username
-6. Target Dynamics CRM Password
-7. Fetch XML Query
+1. Source Dynamics CRM Connection String
+2. Target Dynamics CRM Connection String
+3. Fetch XML Query
 
 You can define the above CRM credentials in release pipeline variables and access those variables as shown in the below image.
 So that you don't need to re-enter the values for each release stage.
@@ -43,9 +38,8 @@ You can specify more than one local optionset logical name and global optionset 
     >>**For Ex:** In the previous parameter you've added two global optionset names and would like to remove 2 option values from both of these two global optionsets. Then you should specify the parameters as shown below.
     >**Global OptionSet Name:** connectionrole_category|msdyn_feasibility
     >**Options To Remove:** 2;3|192350000
-5. Target Dynamics CRM URL
-6. Target Dynamics CRM Username
-6. Target Dynamics CRM Password
+5. Target Dynamics CRM Connection String
+
 
 ![](images/DeleteOptionSetSample.png)
 

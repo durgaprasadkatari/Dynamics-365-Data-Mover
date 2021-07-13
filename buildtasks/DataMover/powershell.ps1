@@ -67,14 +67,17 @@ try {
             $updatedRecordCount = $updatedRecordCount + 1
         }
 
-        $apiEntity = New-Object Microsoft.Xrm.Sdk.Entity($entityName)
-        $entityId = $entityName+"id";
-        $apiEntity.Id = $entity.$entityId
-        $apiEntity.Attributes["statecode"] = $entity.statecode_Property.Value;
-        $apiEntity.Attributes["statuscode"] = $entity.statuscode_Property.Value;
-        $request = new-object Microsoft.Xrm.Sdk.Messages.UpsertRequest
-        $request.Target = $apiEntity
-        $response = $targetConn.Execute($request)
+        if($InactiveRecord -eq 1)
+        {
+            $apiEntity = New-Object Microsoft.Xrm.Sdk.Entity($entityName)
+            $entityId = $entityName+"id";
+            $apiEntity.Id = $entity.$entityId
+            $apiEntity.Attributes["statecode"] = $entity.statecode_Property.Value;
+            $apiEntity.Attributes["statuscode"] = $entity.statuscode_Property.Value;
+            $request = new-object Microsoft.Xrm.Sdk.Messages.UpsertRequest
+            $request.Target = $apiEntity
+            $response = $targetConn.Execute($request)
+        }
     }
 
     Write-Host "Created:-" $createdRecordCount "Updated:-" $updatedRecordCount "out of " $sourceRecords.CrmRecords.Count

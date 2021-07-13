@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "DataMover",
   "name": "Dynamics 365 CI/CD Data Mover",
-  "version": "1.2.1.5",
+  "version": "1.2.2.6",
   "publisher": "durgaprasadkatari",
   "targets": [
     {

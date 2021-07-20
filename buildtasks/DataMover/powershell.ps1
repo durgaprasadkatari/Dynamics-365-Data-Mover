@@ -12,6 +12,9 @@ try {
     $targetConnectionString = Get-VstsInput -Name 'TargetCRMConnectionString' -Require
     
     $fetchxmlQuery = Get-VstsInput -Name 'FetchXML' -Require
+    $relationshipName = Get-VstsInput -Name 'NNRelationshipName'
+    $sourceEntity = Get-VstsInput -Name 'SourceEntityName'
+    $targetEntity = Get-VstsInput -Name 'TargetEntityName'
     
     $sourceConn = Get-CrmConnection -ConnectionString $sourceConnectionString
     Write-Host "Connected to source Dynamics 365" $sourceConn.CrmConnectOrgUriActual.AbsoluteUri
@@ -29,54 +32,71 @@ try {
     $updatedRecordCount = 0
     foreach($entity in $sourceRecords.CrmRecords)
     {
-        $apiEntity = New-Object Microsoft.Xrm.Sdk.Entity($entityName)
-        $InactiveRecord = 0
-        foreach($att in $atts.name)
+        if(-not [string]::IsNullOrEmpty( $relationshipName ))
         {
-            $att1 = $att+"_Property";
-            if($att -eq $entityName+"id")
-            {
-                $entityId = $entityName+"id";
-                $apiEntity.Id = $entity.$entityId
-            }
-            else {
-                if(($att -eq "statecode") -and ($entity.$att1.Value -eq 1))
-                {
-                    $InactiveRecord = 1
-                }
-                else 
-                {
-                    $apiEntity.Attributes[$att] = $entity.$att1.Value
-                }
-            }           
-        }
-        
-        if($InactiveRecord -eq 1)
-        {
-            $apiEntity.Attributes.Remove('statuscode')
-        }
+            Write-Host "relationshipname $relationshipName"
+            $entity1Id = $sourceEntity+"id";
+            $entity2Id = $targetEntity+"id";
+            $Entity1 = New-Object Microsoft.Xrm.Sdk.EntityReference($sourceEntity, $entity.$entity1Id)
+            $Entity2 = New-Object Microsoft.Xrm.Sdk.EntityReference($targetEntity, $entity.$entity2Id)
+            $request = new-object Microsoft.Xrm.Sdk.Messages.AssociateRequest
+            $request.Target = $Entity1
+            $request.RelatedEntities = New-Object Microsoft.Xrm.Sdk.EntityReferenceCollection
+            $request.RelatedEntities.Add($Entity2) 
+            $request.Relationship = New-Object Microsoft.Xrm.Sdk.Relationship($relationshipName)
+            $response = $targetConn.Execute($request)
 
-        $request = new-object Microsoft.Xrm.Sdk.Messages.UpsertRequest
-        $request.Target = $apiEntity
-        $response = $targetConn.Execute($request)
-        If($response.RecordCreated)
-        {
-            $createdRecordCount = $createdRecordCount + 1
         }
         else {
-            $updatedRecordCount = $updatedRecordCount + 1
-        }
-
-        if($InactiveRecord -eq 1)
-        {
             $apiEntity = New-Object Microsoft.Xrm.Sdk.Entity($entityName)
-            $entityId = $entityName+"id";
-            $apiEntity.Id = $entity.$entityId
-            $apiEntity.Attributes["statecode"] = $entity.statecode_Property.Value;
-            $apiEntity.Attributes["statuscode"] = $entity.statuscode_Property.Value;
+            $InactiveRecord = 0
+            foreach($att in $atts.name)
+            {
+                $att1 = $att+"_Property";
+                if($att -eq $entityName+"id")
+                {
+                    $entityId = $entityName+"id";
+                    $apiEntity.Id = $entity.$entityId
+                }
+                else {
+                    if(($att -eq "statecode") -and ($entity.$att1.Value -eq 1))
+                    {
+                        $InactiveRecord = 1
+                    }
+                    else 
+                    {
+                        $apiEntity.Attributes[$att] = $entity.$att1.Value
+                    }
+                }           
+            }
+            
+            if($InactiveRecord -eq 1)
+            {
+                $apiEntity.Attributes.Remove('statuscode')
+            }
+
             $request = new-object Microsoft.Xrm.Sdk.Messages.UpsertRequest
             $request.Target = $apiEntity
             $response = $targetConn.Execute($request)
+            If($response.RecordCreated)
+            {
+                $createdRecordCount = $createdRecordCount + 1
+            }
+            else {
+                $updatedRecordCount = $updatedRecordCount + 1
+            }
+
+            if($InactiveRecord -eq 1)
+            {
+                $apiEntity = New-Object Microsoft.Xrm.Sdk.Entity($entityName)
+                $entityId = $entityName+"id";
+                $apiEntity.Id = $entity.$entityId
+                $apiEntity.Attributes["statecode"] = $entity.statecode_Property.Value;
+                $apiEntity.Attributes["statuscode"] = $entity.statuscode_Property.Value;
+                $request = new-object Microsoft.Xrm.Sdk.Messages.UpsertRequest
+                $request.Target = $apiEntity
+                $response = $targetConn.Execute($request)
+            }
         }
     }
 

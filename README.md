@@ -15,7 +15,14 @@ You can define the above CRM credentials in release pipeline variables and acces
 So that you don't need to re-enter the values for each release stage.
 ![](images/DataMoverSample.PNG)
 
-## Task 2:- Removes option set values from the local and global optionset fields.
+## Task 2:- Sync Team Security roles
+This task associates the team and security roles data from source dynamics instace to the target dynamics crm instance. Currently it only associates the security roles it won't dissociate the existing security roles of the team.
+
+#### Required input parameters
+1. Source Dynamics CRM Connection String
+2. Target Dynamics CRM Connection String
+
+## Task 3:- Removes option set values from the local and global optionset fields.
 This task connects to the target Dynamics CRM instance and removes the option values from local optionset fields and global optionset fields.
 You can specify more than one local optionset logical name and global optionset logical name using the below format.
 

@@ -8,8 +8,8 @@
     "author": "Durgaprasad Katari",
     "version": {
         "Major": 1,
-        "Minor": 6,
-        "Patch": 0
+        "Minor": 8,
+        "Patch": 1
     },
     "instanceNameFormat": "Moves data between dynamics 365",
     "inputs": [
@@ -36,6 +36,30 @@
             "defaultValue": "",
             "required": true,
             "helpMarkDown": "Paste Fetch Xml Query here"
+        },
+        {
+            "name":"NNRelationshipName",
+            "type": "string",
+            "label": "N to N relationship name",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Specify NN relationship name if required"
+        },
+        {
+            "name":"SourceEntityName",
+            "type": "string",
+            "label": "Source Entity name",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Specify Source Entity Name"
+        },
+        {
+            "name":"TargetEntityName",
+            "type": "string",
+            "label": "Target Entity name",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Specify Target Entity Name"
         }
     ],
     "execution": {

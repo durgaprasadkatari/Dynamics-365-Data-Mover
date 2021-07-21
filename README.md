@@ -1,4 +1,4 @@
-﻿﻿# Dynamics-365-Data-Mover
+# Dynamics-365-Data-Mover
 
 Azure DevOps release pipeline task to move configuration data between two Dynamics CRM environments. It also delete option set values from global optionset and local optionset fields.
 

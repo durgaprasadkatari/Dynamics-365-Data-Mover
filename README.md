@@ -10,6 +10,9 @@ This task retrieves the data from source dynamics instace using the fetch xml qu
 1. Source Dynamics CRM Connection String
 2. Target Dynamics CRM Connection String
 3. Fetch XML Query
+4. N:N Relationship Name
+5. Source Entity Name
+6. Target Entity Name
 
 You can define the above CRM credentials in release pipeline variables and access those variables as shown in the below image.
 So that you don't need to re-enter the values for each release stage.

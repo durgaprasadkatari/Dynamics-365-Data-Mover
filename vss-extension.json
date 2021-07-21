@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "DataMover",
   "name": "Dynamics 365 CI/CD Data Mover",
-  "version": "1.3.2.16",
+  "version": "1.3.2.18",
   "publisher": "durgaprasadkatari",
   "targets": [
     {
@@ -53,6 +53,21 @@
     "license": {
       "path": "LICENSE.md"
     }
+  },
+  "links": {
+    "getstarted": {
+        "uri": "https://github.com/durgaprasadkatari/Dynamics-365-Data-Mover"
+    },
+    "support": {
+        "uri": "https://github.com/durgaprasadkatari/Dynamics-365-Data-Mover/issues"
+    },
+    "privacypolicy": {
+      "uri": "https://github.com/durgaprasadkatari/Dynamics-365-Data-Mover/privacypolicy.md"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/durgaprasadkatari/Dynamics-365-Data-Mover"
   },
   "contributions": [
     {

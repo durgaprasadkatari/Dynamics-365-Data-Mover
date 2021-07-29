@@ -32,19 +32,24 @@ try {
     $updatedRecordCount = 0
     foreach($entity in $sourceRecords.CrmRecords)
     {
+        
         if(-not [string]::IsNullOrEmpty( $relationshipName ))
         {
-            Write-Host "relationshipname $relationshipName"
-            $entity1Id = $sourceEntity+"id";
-            $entity2Id = $targetEntity+"id";
-            $Entity1 = New-Object Microsoft.Xrm.Sdk.EntityReference($sourceEntity, $entity.$entity1Id)
-            $Entity2 = New-Object Microsoft.Xrm.Sdk.EntityReference($targetEntity, $entity.$entity2Id)
-            $request = new-object Microsoft.Xrm.Sdk.Messages.AssociateRequest
-            $request.Target = $Entity1
-            $request.RelatedEntities = New-Object Microsoft.Xrm.Sdk.EntityReferenceCollection
-            $request.RelatedEntities.Add($Entity2) 
-            $request.Relationship = New-Object Microsoft.Xrm.Sdk.Relationship($relationshipName)
-            $response = $targetConn.Execute($request)
+            try {
+                $entity1Id = $sourceEntity+"id";
+                $entity2Id = $targetEntity+"id";
+                $Entity1 = New-Object Microsoft.Xrm.Sdk.EntityReference($sourceEntity, $entity.$entity1Id)
+                $Entity2 = New-Object Microsoft.Xrm.Sdk.EntityReference($targetEntity, $entity.$entity2Id)
+                $request = new-object Microsoft.Xrm.Sdk.Messages.AssociateRequest
+                $request.Target = $Entity1
+                $request.RelatedEntities = New-Object Microsoft.Xrm.Sdk.EntityReferenceCollection
+                $request.RelatedEntities.Add($Entity2) 
+                $request.Relationship = New-Object Microsoft.Xrm.Sdk.Relationship($relationshipName)
+                $response = $targetConn.Execute($request)
+            }
+            catch {
+                Write-Host "Error occurred: for source entity id"+ $entity.$entity1Id + " target entity id "+$entity.$entity2Id
+            }
 
         }
         else {

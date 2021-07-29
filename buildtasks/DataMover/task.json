@@ -9,7 +9,7 @@
     "version": {
         "Major": 1,
         "Minor": 8,
-        "Patch": 1
+        "Patch": 2
     },
     "instanceNameFormat": "Moves data between dynamics 365",
     "inputs": [
